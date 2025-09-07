@@ -1,15 +1,15 @@
 {
-  "id": "cz-appsettiing",
-  "displayName": "跳转原生APP系统设置插件，支持安卓、iOS、鸿蒙Next的UTS组件",
+  "id": "cz-appsetting",
+  "displayName": "打开原生APP系统设置插件",
   "version": "1.0.0",
-  "description": "跳转系统设置、WLAN、蓝牙、移动网络、声音和振动、开发者模式等设置项",
+  "description": "打开原生APP系统设置插件 支持安卓/iOS/鸿蒙UTS组件",
   "keywords": [
-    "WLAN设置",
+    "系统设置",
+    "APP详情",
     "蓝牙设置",
-    "移动网络设置",
-    "开发者模式"
+    "开发者选项设置"
 ],
-  "repository": "",
+  "repository": "https://github.com/932707629/uts-appsetting-simple",
   "engines": {
     "HBuilderX": "^4.42"
   },
@@ -62,7 +62,7 @@
         },
         "App": {
             "app-android": {
-                "minVersion": "19"
+                "minVersion": "21"
             },
             "app-ios": {
                 "minVersion": "12"
