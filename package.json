@@ -1,0 +1,87 @@
+{
+    "id": "uts-appsetting",
+    "name": "uts-appsetting",
+    "displayName": "uts-appsetting",
+    "version": "1.1.19",
+    "description": "UTS插件示例项目",
+    "repository": "https://gitcode.net/dcloud/hello-uts",
+    "keywords": [
+        "uts",
+        "示例工程"
+    ],
+    "author": "",
+    "license": "MIT",
+    "dependencies": {},
+    "engines": {
+        "HBuilderX": "^3.99"
+    },
+    "dcloudext": {
+        "sale": {
+            "regular": {
+                "price": "0.00"
+            },
+            "sourcecode": {
+                "price": "0.00"
+            }
+        },
+        "contact": {
+            "qq": ""
+        },
+        "declaration": {
+            "ads": "无",
+            "data": "不采集任何数据",
+            "permissions": ""
+        },
+        "npmurl": "",
+        "type": "uniapp-template-project"
+    },
+    "uni_modules": {
+        "dependencies": [],
+        "encrypt": [],
+        "platforms": {
+            "cloud": {
+                "tcb": "n",
+                "aliyun": "n"
+            },
+            "client": {
+                "App": {
+                    "app-vue": "y",
+                    "app-nvue": "y",
+                    "app-uvue": "y"
+                },
+                "H5-mobile": {
+                    "Safari": "n",
+                    "Android Browser": "n",
+                    "微信浏览器(Android)": "n",
+                    "QQ浏览器(Android)": "n"
+                },
+                "H5-pc": {
+                    "Chrome": "n",
+                    "IE": "n",
+                    "Edge": "n",
+                    "Firefox": "n",
+                    "Safari": "n"
+                },
+                "小程序": {
+                    "微信": "n",
+                    "阿里": "n",
+                    "百度": "n",
+                    "字节跳动": "n",
+                    "QQ": "n",
+                    "京东": "n",
+                    "钉钉": "n",
+                    "快手": "n",
+                    "飞书": "n"
+                },
+                "快应用": {
+                    "华为": "n",
+                    "联盟": "n"
+                },
+                "Vue": {
+                    "vue2": "y",
+                    "vue3": "y"
+                }
+            }
+        }
+    }
+}

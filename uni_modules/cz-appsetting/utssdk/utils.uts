@@ -1,0 +1,16 @@
+
+
+
+  /**
+   * * 判断字符串是否为空
+   * @param property 被检测的字符串
+   * @return Boolean
+   */
+  export function isEmpty(property?: string | null): boolean {
+    if (property == '' || property == null || property == 'undefined' ||
+      property!.length == 0) {
+      return true
+    }
+    return false
+  }
+

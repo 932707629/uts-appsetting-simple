@@ -1,0 +1,70 @@
+{
+    "name" : "uts-appsetting",
+    "appid" : "__UNI__F6A908B",
+    "description" : "",
+    "versionName" : "1.1.0",
+    "versionCode" : "110",
+    "transformPx" : false,
+    "app-plus" : {
+        "usingComponents" : true,
+        "nvueStyleCompiler" : "uni-app",
+        "compilerVersion" : 3,
+        "splashscreen" : {
+            "alwaysShowBeforeRender" : true,
+            "waiting" : true,
+            "autoclose" : true,
+            "delay" : 0
+        },
+        "modules" : {},
+        "distribute" : {
+            "android" : {
+                "permissions" : [],
+                "minSdkVersion" : 19,
+                "abiFilters" : [ "armeabi-v7a", "arm64-v8a", "x86" ]
+            },
+            "ios" : {
+                "dSYMs" : false
+            },
+            "sdkConfigs" : {
+                "ad" : {}
+            }
+        }
+    },
+    "quickapp" : {},
+    "mp-weixin" : {
+        "appid" : "",
+        "setting" : {
+            "urlCheck" : false
+        },
+        "usingComponents" : true
+    },
+    "mp-alipay" : {
+        "usingComponents" : true
+    },
+    "mp-baidu" : {
+        "usingComponents" : true
+    },
+    "mp-toutiao" : {
+        "usingComponents" : true
+    },
+    "uniStatistics" : {
+        "enable" : false
+    },
+    "vueVersion" : "3",
+    "app-harmony" : {
+        "distribute" : {
+            "bundleName" : "me.soushin.appsetting",
+            "signingConfigs" : {
+                "default" : {
+                    "certpath" : "/Users/Soushin/Library/Application Support/HBuilder X/extensions/launcher/agc-certs/1750473160704.cer",
+                    "keyAlias" : "debugKey",
+                    "keyPassword" : "0000001BEB42F30575CCD4A66F9133736305B92CEC8B434C9CB2FADE236876A3E2F329CAD52E05C8D7FF5F",
+                    "profile" : "/Users/Soushin/Library/Application Support/HBuilder X/extensions/launcher/agc-certs/1750473160704.p7b",
+                    "signAlg" : "SHA256withECDSA",
+                    "storeFile" : "/Users/Soushin/Library/Application Support/HBuilder X/extensions/launcher/agc-certs/1750473160704.p12",
+                    "storePassword" : "0000001BEB42F30575CCD4A66F9133736305B92CEC8B434C9CB2FADE236876A3E2F329CAD52E05C8D7FF5F"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,127 @@
+
+import DevicePolicyManager from 'android.app.admin.DevicePolicyManager'
+import Intent from 'android.content.Intent'
+import Uri from 'android.net.Uri'
+import Build from 'android.os.Build'
+import Settings from 'android.provider.Settings'
+
+
+export function openWIFISettings(asAnotherTask:Boolean = false){
+	openSettings(Settings.ACTION_WIFI_SETTINGS, asAnotherTask)
+}
+
+export function openWirelessSettings(asAnotherTask:Boolean = false){
+	openSettings(Settings.ACTION_WIRELESS_SETTINGS, asAnotherTask)
+}
+
+export function openLocationSettings(asAnotherTask:Boolean = false){
+	openSettings(Settings.ACTION_LOCATION_SOURCE_SETTINGS, asAnotherTask)
+}
+export function openSecuritySettings(asAnotherTask:Boolean = false){
+	openSettings(Settings.ACTION_SECURITY_SETTINGS, asAnotherTask)
+}
+export function openLockAndPasswordSettings(asAnotherTask:Boolean = false){
+   openSettings(DevicePolicyManager.ACTION_SET_NEW_PASSWORD, asAnotherTask)
+}
+export function openBluetoothSettings(asAnotherTask:Boolean = false){
+   openSettings(Settings.ACTION_BLUETOOTH_SETTINGS, asAnotherTask)
+}
+export function openDataRoamingSettings(asAnotherTask:Boolean = false){
+   openSettings(Settings.ACTION_DATA_ROAMING_SETTINGS, asAnotherTask)
+}
+
+export function openDateSettings(asAnotherTask:Boolean = false){
+   openSettings(Settings.ACTION_DATE_SETTINGS, asAnotherTask)
+}
+export function openDisplaySettings(asAnotherTask:Boolean = false){
+    openSettings(Settings.ACTION_DISPLAY_SETTINGS, asAnotherTask)
+}
+export function openNotificationSettings(asAnotherTask:Boolean = false){
+	if (Build.VERSION.SDK_INT >= 26) {
+	    let intent = Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS)
+	            .putExtra(Settings.EXTRA_APP_PACKAGE, UTSAndroid.getUniActivity()!.packageName)
+	    if (asAnotherTask) intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+	    UTSAndroid.getUniActivity()!.startActivity(intent)
+	} else {
+	    openAppSettings(asAnotherTask)
+    }
+}
+export function openSoundSettings(asAnotherTask:Boolean = false){
+	openSettings(Settings.ACTION_SOUND_SETTINGS, asAnotherTask)
+}
+
+export function openInternalStorageSettings(asAnotherTask:Boolean = false){
+    openSettings(Settings.ACTION_INTERNAL_STORAGE_SETTINGS, asAnotherTask)
+
+}
+export function openBatteryOptimizationSettings(asAnotherTask:Boolean = false){
+    openSettings(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS, asAnotherTask)
+	
+}
+export function openAppSettings(asAnotherTask:Boolean = false){
+	let intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+	if (asAnotherTask) intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+	let uri = Uri.fromParts("package", UTSAndroid.getUniActivity()!.packageName, null)
+	intent.data = uri
+	UTSAndroid.getUniActivity()!.startActivity(intent)
+}
+
+export function openNFCSettings(asAnotherTask:Boolean = false){
+    openSettings(Settings.ACTION_NFC_SETTINGS, asAnotherTask)
+}
+
+export function openDeviceSettings(asAnotherTask:Boolean = false){
+    openSettings(Settings.ACTION_SETTINGS, asAnotherTask)
+
+}
+
+export function openVPNSettings(asAnotherTask:Boolean = false){
+	if(Build.VERSION.SDK_INT >= 24) {
+        openSettings(Settings.ACTION_VPN_SETTINGS, asAnotherTask)
+    }else{
+        openSettings("android.net.vpn.SETTINGS", asAnotherTask)
+    }
+	
+}
+
+export function openAccessibilitySettings(asAnotherTask:Boolean = false){
+    openSettings(Settings.ACTION_ACCESSIBILITY_SETTINGS, asAnotherTask)
+
+}
+
+
+export function openDevelopmentSettings(asAnotherTask:Boolean = false){
+   openSettings(Settings.ACTION_APPLICATION_DEVELOPMENT_SETTINGS, asAnotherTask)
+	
+}
+
+
+export function openHotspotSettings(asAnotherTask:Boolean = false){
+	let intent = Intent()
+	intent.setClassName("com.android.settings", "com.android.settings.TetherSettings")
+	openSettingsWithCustomIntent(intent, asAnotherTask)
+}
+
+
+export function openSettings(url: String,asAnotherTask:Boolean = false){
+	try {
+	    let intent = Intent(url)
+	    if (asAnotherTask) intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+	    UTSAndroid.getUniActivity()!.startActivity(intent)
+	} catch (e: Exception) {
+	    // Default to APP Settings if setting activity fails to load/be available on device
+	    openAppSettings(asAnotherTask)
+	}
+}
+
+export function openSettingsWithCustomIntent(intent: Intent, asAnotherTask: Boolean = false){
+	try {
+	    if (asAnotherTask) intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+	    UTSAndroid.getUniActivity()!.startActivity(intent)
+	} catch (e: Exception) {
+	    // Default to APP Settings if setting activity fails to load/be available on device
+	    openAppSettings(asAnotherTask)
+	}
+}
+
+

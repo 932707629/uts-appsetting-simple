@@ -1,0 +1,90 @@
+
+import UIKit from 'UIKit'
+import StoreKit from 'StoreKit'
+
+
+export function openWIFISettings(asAnotherTask:Boolean = false){
+	openSettings(UIApplication.openSettingsURLString)
+}
+
+export function openWirelessSettings(asAnotherTask:Boolean = false){
+	openSettings(UIApplication.openSettingsURLString)
+}
+
+export function openLocationSettings(asAnotherTask:Boolean = false){
+	openSettings(UIApplication.openSettingsURLString)
+}
+export function openSecuritySettings(asAnotherTask:Boolean = false){
+	openSettings(UIApplication.openSettingsURLString)
+}
+export function openLockAndPasswordSettings(asAnotherTask:Boolean = false){
+   openSettings(UIApplication.openSettingsURLString)
+}
+export function openBluetoothSettings(asAnotherTask:Boolean = false){
+   openSettings(UIApplication.openSettingsURLString)
+}
+export function openDataRoamingSettings(asAnotherTask:Boolean = false){
+   openSettings(UIApplication.openSettingsURLString)
+}
+
+export function openDateSettings(asAnotherTask:Boolean = false){
+   openSettings(UIApplication.openSettingsURLString)
+}
+export function openDisplaySettings(asAnotherTask:Boolean = false){
+    openSettings(UIApplication.openSettingsURLString)
+}
+export function openNotificationSettings(asAnotherTask:Boolean = false){
+	if (UTSiOS.available("iOS 16.0, *")) {
+		openSettings(UIApplication.openNotificationSettingsURLString)
+	}else{
+		openSettings(UIApplication.openSettingsURLString)
+	}
+}
+export function openSoundSettings(asAnotherTask:Boolean = false){	
+	openSettings(UIApplication.openSettingsURLString)
+}
+
+export function openInternalStorageSettings(asAnotherTask:Boolean = false){
+    openSettings(UIApplication.openSettingsURLString)
+}
+export function openBatteryOptimizationSettings(asAnotherTask:Boolean = false){
+    openSettings(UIApplication.openSettingsURLString)
+}
+export function openAppSettings(asAnotherTask:Boolean = false){
+	openSettings(UIApplication.openSettingsURLString)
+}
+
+export function openNFCSettings(asAnotherTask:Boolean = false){
+    openSettings(UIApplication.openSettingsURLString)
+}
+
+export function openDeviceSettings(asAnotherTask:Boolean = false){
+    openSettings(UIApplication.openSettingsURLString)
+}
+
+export function openVPNSettings(asAnotherTask:Boolean = false){
+	openSettings(UIApplication.openSettingsURLString)
+}
+
+export function openAccessibilitySettings(asAnotherTask:Boolean = false){
+    openSettings(UIApplication.openSettingsURLString)
+}
+
+
+export function openDevelopmentSettings(asAnotherTask:Boolean = false){
+   openSettings(UIApplication.openSettingsURLString)
+}
+
+
+export function openHotspotSettings(asAnotherTask:Boolean = false){
+	openSettings(UIApplication.openSettingsURLString)
+}
+
+
+export function openSettings(settingsUrl: String){
+	let url = URL(string = settingsUrl)
+	if (UIApplication.shared.canOpenURL(url!)) {
+	    UIApplication.shared.open(url!, options = Dictionary<String, String>(), completionHandler = nil)
+	}
+}
+

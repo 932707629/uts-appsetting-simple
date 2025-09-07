@@ -1,0 +1,181 @@
+
+
+//初始化
+export type InitParams = {
+	accessKey: string,
+	secretKey: string,
+	endPoint: string,
+	securityToken?: string | null,
+	androidConfig?: AndroidConfiguration | null,
+	iosConfig?: IOSConfiguration | null,
+	harmonyConfig?: HarmonyConfiguration | null,
+	enableLog?: boolean | null,///日志开关
+}
+
+///安卓配置参数
+export type AndroidConfiguration = {
+	connectionTimeout?: number | null,//建立HTTP/HTTPS连接的超时时间（单位：毫秒）。默认为60000毫秒
+	maxConnections?: number | null,//最大允许的HTTP并发请求数。默认为1000。
+	maxErrorRetry?: number | null,//请求失败（请求异常、服务端报500或503错误等）后最大的重试次数。默认3次
+	socketTimeout?: number | null,//Socket层传输数据的超时时间（单位：毫秒）。默认为60000毫秒
+	endpointHttpPort?: number | null,//设置 HTTP 请求的端口号（默认为 80）
+	endpointHttpsPort?: number | null,//设置 HTTPS 请求的端口号（默认为 443）
+	httpsOnly?: boolean | null,//指定是否使用 HTTPS 进行 OBS 连接（默认情况下为“true”）
+	endPoint?: string | null,//连接OBS的服务地址。可包含协议类型、域名、端口号。示例：https://your-endpoint:443
+	pathStyle?: boolean | null,//是否要启用对 OBS 的路径式访问。“true”表示启用路径式访问，而“false”（默认值）表示启用虚拟托管式访问。注意：如果启用路径式访问，则不支持 OBS 3.0 的新存储桶功能。
+	validateCertificate?: boolean | null,//是否验证服务端证书。默认为false
+	verifyResponseContentType?: boolean | null,//是否验证响应头信息的ContentType。默认为true
+	isStrictHostnameVerification?: boolean | null,//是否严格验证服务端主机名。默认为false。
+	// uploadStreamRetryBufferSize?: number | null,///上传流对象时使用的缓存大小（单位：字节）。默认为512KB
+	socketWriteBufferSize?: number | null,//Socket发送缓冲区大小（单位：字节），对应java.net.SocketOptions.SO_SNDBUF参数。默认为-1表示不设置
+	socketReadBufferSize?: number | null,//Socket接收缓冲区大小（单位：字节），对应java.net.SocketOptions.SO_RCVBUF参数。默认为-1表示不设置
+	readBufferSize?: number | null,//从Socket流下载对象的缓存大小（单位：字节），-1表示不设置缓存。默认为-1
+	writeBufferSize?: number | null,//上传对象到Socket流时的缓存大小（单位：字节），-1表示不设置缓存。默认为-1
+	idleConnectionTime?: number | null,//如果空闲时间超过此参数的设定值，则关闭连接（单位：毫秒）。默认为30000毫秒
+	maxIdleConnections?: number | null,//连接池中最大空闲连接数，默认值：1000
+}
+
+///iOS配置参数
+export type IOSConfiguration = {
+	trustUnsafeCert?: boolean | null,//是否信任不安全证书，默认为“NO”
+	maxConcurrentCommandRequestCount?: number | null,//允许的最大的命令请求并发数，默认为3
+	maxConcurrentUploadRequestCount?: number | null,//允许的最大的上传请求并发数，默认为3
+	maxConcurrentDownloadRequestCount?: number | null,//允许的最大的下载请求并发数，默认为3
+	httpMaximumCommandPerHost?: number | null,//允许打开的最大的命令请求连接数, ios系统中默认为4
+	httpMaximumUploadPerHost?: number | null,//允许打开的最大的上传请求连接数, ios系统中默认为4
+	httpMaximumDownloadPerHost?: number | null,//允许打开的最大的下载请求连接数, ios系统中默认为4
+	httpMaximumBackgroundUploadPerHost?: number | null,//允许打开的最大的后台上传请求连接数, ios系统中默认为4
+	httpMaximumBackgroundDownloadPerHost?: number | null,//允许打开的最大的后台下载请求连接数, ios系统中默认为4
+	timeoutIntervalForCommand?: number | null,//配置命令请求的超时时间；（单位秒）
+	timeoutIntervalForUpload?: number | null,//配置上传相关请求的超时时间；（单位秒）
+	timeoutIntervalForDownload?: number | null,//配置下载相关请求的超时时间；（单位秒）
+}
+
+///鸿蒙配置参数
+export type HarmonyConfiguration = {
+	IsSecure?: boolean | null,//
+	Timeout?: number | null,//HTTP/HTTPS请求的总超时时间。默认300，单位：秒。
+	IsCname?: string | null,//是否通过自定义域名访问OBS服务。默认为"false"
+	Port?: number | null,//端口号
+	IsSignatureNegotiation?: boolean | null,//
+	PathStyle?: boolean | null,//
+}
+
+//创建桶
+export type BucketParams = {
+	bucketName: string,
+	location?: string | null,// 设置桶区域位置
+	completeListener: (res : ResponseEntity) => void
+}
+
+//列举桶
+export type ListBucketsParams = {
+	completeListener: (res : ResponseEntity) => void
+}
+
+///存储桶信息
+export type BucketEntity = {
+	bucketName?: string | null,
+	location?: string | null,
+	creationDate?: number | null,
+}
+
+//对象文件信息
+export type ObjectEntity = {
+	objectKey?: string | null,
+	ownerName?: string | null,
+}
+
+//删除桶
+export type DeleteBucketParams = {
+	bucketName: string,
+	completeListener?: (res : ResponseEntity) => void
+}
+
+//桶是否存在
+export type HeadBucketParams = {
+	bucketName: string,
+	completeListener: (res : ResponseEntity) => void
+}
+
+//列举桶对象
+export type ListObjectsParams = {
+	bucketName: string,
+	completeListener: (res : ResponseEntity) => void
+}
+
+//删除桶对象
+export type DeleteObjectParams = {
+	bucketName: string,
+	objectKey: string,
+	completeListener?: (res : ResponseEntity) => void
+}
+
+//上传文件
+export type UploadFileParams = {
+	bucketName: string,
+	objectkey: string,
+	path:string,// path 为待上传的本地文件路径，需要指定到具体的文件名
+	expires?: number | null,///设置对象过期时间，单位天
+	progressInterval?: number | null,//默认每上传100 * 1024L(100kb)数据反馈上传进度
+	progressListener?: (status : FileProgressStatus) => void
+	completeListener?: (res : ResponseEntity) => void
+}
+
+
+///上传/下载进度
+export type FileProgressStatus = {
+	// instantaneousSpeed: number,
+	// averageSpeed: number,
+	transferPercentage: number,//上传进度百分比
+	newlyTransferredBytes: number,//本次接收的字节
+	transferredBytes: number,//累计接收的字节
+	totalBytes: number,//总字节
+}
+
+
+///断点续传上传
+export type MultipartUploadFileParams = {
+	bucketName: string,
+	objectkey: string,
+	path:string,// path 为待上传的本地文件路径，需要指定到具体的文件名
+	taskNum?: number | null,///设置分段上传时的最大并发数
+	partSize?: number | null,///设置分段大小，例如10 * 1024 * 1024（10MB）
+	enableCheckpoint?: boolean | null,///是否开启断点续传模式，默认为false，表示不开启
+	progressInterval?: number | null,//默认每上传100 * 1024L(100kb)数据反馈上传进度
+	progressListener?: (status : FileProgressStatus) => void
+	completeListener?: (res : ResponseEntity) => void
+}
+
+//下载文件
+export type DownloadFileParams = {
+	bucketName: string,
+	objectkey: string,
+	savePath: string,// path 为文件保存路径，需要确定有存储到该位置的权限，需要指定到具体的文件名
+	progressInterval?: number | null,//默认每下载100 * 1024L(100kb)数据反馈下载进度
+	progressListener?: (status : FileProgressStatus) => void
+	completeListener?: (res : ResponseEntity) => void
+}
+
+///断点续传下载
+export type MultipartDownloadFileParams = {
+	bucketName : string,
+	objectkey: string,
+	savePath: string,// 下载对象的本地文件全路径。当该值为空时，安卓默认为当前程序的运行目录 iOS必填
+	taskNum?: number | null,///设置分段上传时的最大并发数
+	partSize?: number | null,///设置分段大小，例如10 * 1024 * 1024（10MB）
+	enableCheckpoint?: boolean | null,///是否开启断点续传模式，默认为false，表示不开启
+	progressInterval?: number | null,//默认每下载100 * 1024L(100kb)数据反馈下载进度
+	progressListener?: (status : FileProgressStatus) => void
+	completeListener?: (res : ResponseEntity) => void
+}
+
+///请求返回体
+export type ResponseEntity = {
+	success: boolean,
+	data?: any | null,
+	error?: string | null,
+}
+
+
+
