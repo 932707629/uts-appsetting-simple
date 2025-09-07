@@ -1,1 +1,204 @@
+import { Want, common，bundleManager } from '@kit.AbilityKit';
 
+///鸿蒙系统设置及系统应用跳转文档 https://developer.huawei.com/consumer/cn/doc/architecture-guides/jump_set-0000002283797405
+
+export function openWIFISettings(asAnotherTask:Boolean = false){
+	let want: Want = {
+		bundleName: 'com.huawei.hmos.settings',
+	    abilityName: 'com.huawei.hmos.settings.MainAbility',// com.huawei.hmos.settings.AppInfoAbility
+	    uri:"wifi_entry",
+	};
+	openSettings(want);
+}
+
+export function openWirelessSettings(asAnotherTask:Boolean = false){
+	let want: Want = {
+	  bundleName: 'com.huawei.hmos.settings',
+	  abilityName: 'com.huawei.hmos.settings.MainAbility',
+	  uri: 'mobile_network_entry',
+	};
+	openSettings(want);
+}
+
+export function openLocationSettings(asAnotherTask:Boolean = false){
+	let want: Want = {
+		bundleName: 'com.huawei.hmos.settings',
+		abilityName: 'com.huawei.hmos.settings.MainAbility',
+		uri: 'location_manager_settings',
+	};
+	openSettings(want);
+}
+
+export function openSecuritySettings(asAnotherTask:Boolean = false){
+	let want: Want = {
+	  bundleName: 'com.huawei.hmos.settings',
+	  abilityName: 'com.huawei.hmos.settings.MainAbility',
+	  uri: 'privacy_settings',
+	};
+	openSettings(want);
+}
+
+export function openLockAndPasswordSettings(asAnotherTask:Boolean = false){
+	let want: Want = {
+	  bundleName: 'com.huawei.hmos.settings',
+	  abilityName: 'com.huawei.hmos.settings.MainAbility',
+	  uri: 'biometrics_and_password_settings',
+	};
+	openSettings(want);
+}
+
+export function openBluetoothSettings(asAnotherTask:Boolean = false){
+	let want: Want = {
+	  bundleName: 'com.huawei.hmos.settings',
+	  abilityName: 'com.huawei.hmos.settings.MainAbility',
+	  uri: 'bluetooth_entry',
+	};
+	openSettings(want);
+}
+
+export function openDataRoamingSettings(asAnotherTask:Boolean = false){
+	let want: Want = {
+	  bundleName: 'com.huawei.hmos.settings',
+	  abilityName: 'com.huawei.hmos.settings.MainAbility',
+	  uri: 'mobile_network_entry',
+	};
+	openSettings(want);
+}
+
+export function openDateSettings(asAnotherTask:Boolean = false){
+	let want: Want = {
+		bundleName: 'com.huawei.hmos.settings',
+		abilityName: 'com.huawei.hmos.settings.MainAbility',
+		uri: 'date_and_time',
+	};
+	openSettings(want);
+}
+
+export function openDisplaySettings(asAnotherTask:Boolean = false){
+	let want: Want = {
+		bundleName: 'com.huawei.hmos.settings',
+		abilityName: 'com.huawei.hmos.settings.MainAbility',
+		uri: 'display_settings',
+	};
+	openSettings(want);
+}
+
+export function openNotificationSettings(asAnotherTask:Boolean = false){
+	let bundleInfo = bundleManager.getBundleInfoForSelfSync(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
+	let want: Want = {
+	  bundleName: 'com.huawei.hmos.settings',//设置应用bundleName
+	  abilityName: 'com.huawei.hmos.settings.MainAbility',//设置应用abilityName
+	  uri: "systemui_notification_settings",//通知管理页面
+	  parameters: {
+		  pushParams:{
+			  bundleName:bundleInfo.name;
+		  };
+	  }
+	};
+	openSettings(want);
+}
+
+export function openSoundSettings(asAnotherTask:Boolean = false){
+	let want: Want = {
+		bundleName: 'com.huawei.hmos.settings',
+		abilityName: 'com.huawei.hmos.settings.MainAbility',
+		uri: 'volume_settings',
+	};
+	openSettings(want);
+}
+
+export function openInternalStorageSettings(asAnotherTask:Boolean = false){
+	let want: Want = {
+		bundleName: 'com.huawei.hmos.settings',
+		abilityName: 'com.huawei.hmos.settings.MainAbility',
+		uri: 'storage_settings',
+	};
+	openSettings(want);
+}
+
+export function openBatteryOptimizationSettings(asAnotherTask:Boolean = false){
+	let want: Want = {
+		bundleName: 'com.huawei.hmos.settings',
+		abilityName: 'com.huawei.hmos.settings.MainAbility',
+		uri: 'battery',
+	};
+	openSettings(want);
+}
+
+export function openAppSettings(asAnotherTask:Boolean = false){
+	let bundleInfo = bundleManager.getBundleInfoForSelfSync(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
+	let want: Want = {
+	  bundleName: 'com.huawei.hmos.settings',
+	  abilityName: 'com.huawei.hmos.settings.MainAbility',
+	  uri: 'application_info_entry',
+	  parameters: {
+		  pushParams:bundleInfo.name;
+	  }
+	};
+	openSettings(want);
+}
+
+
+export function openNFCSettings(asAnotherTask:Boolean = false){
+	let want: Want = {
+	  bundleName: 'com.huawei.hmos.settings',
+	  abilityName: 'com.huawei.hmos.settings.MainAbility',
+	  uri: 'nfc_settings',
+	};
+	openSettings(want);
+}
+
+export function openDeviceSettings(asAnotherTask:Boolean = false){
+	let want: Want = {
+		bundleName: 'com.huawei.hmos.settings',
+		abilityName: 'com.huawei.hmos.settings.MainAbility',
+		uri: 'about_device',
+	};
+	openSettings(want);
+}
+
+
+export function openVPNSettings(asAnotherTask:Boolean = false){
+	let want: Want = {
+		bundleName: 'com.huawei.hmos.settings',
+		abilityName: 'com.huawei.hmos.settings.MainAbility',
+	};
+	openSettings(want);
+}
+
+export function openAccessibilitySettings(asAnotherTask:Boolean = false){
+	let want: Want = {
+		bundleName: 'com.huawei.hmos.settings',
+		abilityName: 'com.huawei.hmos.settings.MainAbility',
+		uri:'accessibility_feature'
+	};
+	openSettings(want);
+}
+
+export function openDevelopmentSettings(asAnotherTask:Boolean = false){
+	let want: Want = {
+	  bundleName: 'com.huawei.hmos.settings',
+	  abilityName: 'com.huawei.hmos.settings.MainAbility',
+	  uri:"developer_options_settings"
+	};
+	openSettings(want);
+}
+
+export function openHotspotSettings(asAnotherTask:Boolean = false){
+	let want: Want = {
+		bundleName: 'com.huawei.hmos.settings',
+		abilityName: 'com.huawei.hmos.settings.MainAbility',
+		uri:'hotspot_data_settings'
+	};
+	openSettings(want);
+}
+
+
+export function openSettings(want: Want,){
+	let context = UTSHarmony.getUIAbilityContext();
+	context.startAbility(want).then(()=>{
+		console.log("successed to startAbility")
+	}).catch((err)=>{
+		console.error(`Failed to startAbility. Code: ${err.code}, message: ${err.message}`);
+	})
+}
